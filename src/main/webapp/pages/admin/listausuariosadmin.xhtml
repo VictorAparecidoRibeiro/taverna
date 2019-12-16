@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template/template.xhtml"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+    <ui:define name="title">Lista de administradores</ui:define>
+    
+    <f:metadata>
+        <f:viewAction action="#{adminMB.inicializaListaUsuarios()}" />
+    </f:metadata>
+
+    <ui:define name="content">
+
+
+
+        <div class="ui-g">
+            <div class="ui-g-12">
+
+                <p:outputLabel value="Administradores" style="font-weight: bolder; font-size: 16px;"/>
+                <div class="card">
+
+
+                    <h:form id="formAdmnistradores">
+                        <p:growl id="alert" showDetail="true" autoUpdate="true"/>
+
+
+
+                        <p:dataTable id="tableUser" var="usuario" value="#{adminMB.listaDeUsuarios}" reflow="true" rows="15" 
+                                     paginator="true" emptyMessage="Nenhum registro encontrado" 
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
+                                     {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15"  currentPageReportTemplate="[ Exibindo de {startRecord} a {endRecord} no total de {totalRecords}
+                                     - Página: {currentPage}/{totalPages} ]" paginatorPosition="bottom" >
+
+                            <f:facet name="header">
+
+
+                                <p:commandButton id="toggler" type="button" value="Colunas" style="margin-left: 90%;"  icon="fa fa-columns" />
+                                <p:columnToggler datasource="tableUser" trigger="toggler" />
+                            </f:facet>
+
+                            <p:column headerText="E-mail" sortBy="#{usuario.email}" filterBy="#{usuario.email}">
+                                <center> <h:outputText value="#{usuario.email}" /></center> 
+                            </p:column>
+
+
+                            <p:column headerText="Edição" style="width: 10%;">
+                                <center> 
+                                    <p:button icon="fa fa-edit" title="Edição"  outcome="/pages/admin/cadastroadmin.xhtml">
+                                         <f:param name="id" value="#{usuario.id}" />
+                                    </p:button> 
+                                </center> 
+                            </p:column>
+
+                            <p:column headerText="Exclusão" style="width: 10%;">
+                                <center>
+                                    <p:commandButton  icon="fa fa-trash-o" title="Exclusão" process="@form"  class="btn-danger" 
+                                                      update="@form" action="#{adminMB.excluir()}">
+                                        <p:confirm header="Confirmação" message="Deseja deletar este usuário?" icon="pi pi-exclamation-triangle" />
+                                        <f:setPropertyActionListener target="#{adminMB.usuario}" value="#{usuario}"/> 
+                                    </p:commandButton>
+                                </center>    
+                            </p:column>
+
+                        </p:dataTable>
+
+                        <p:toolbar styleClass="toolbarPadrao">
+                            <f:facet name="left">
+
+                                <p:button value="Administrador" icon="fa fa-plus" outcome="/pages/admin/cadastroadmin.xhtml"/>
+
+                            </f:facet>
+
+                        </p:toolbar>
+
+
+
+                    </h:form>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+    </ui:define>
+
+</ui:composition>

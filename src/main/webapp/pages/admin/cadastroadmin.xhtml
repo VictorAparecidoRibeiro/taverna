@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:o="http://omnifaces.org/ui"
+                template="/WEB-INF/template/template.xhtml">
+
+    <ui:define name="title">#{adminMB.usuario.id == null ? 'Cadastro de novo administrador' : 'Edição de administrador'}</ui:define>
+
+    <f:metadata>
+        <!-- Chama incializar quando entrar no form, pegando o id passado pela URL -->
+        <f:viewParam name="id" value="#{adminMB.idTrocaPagina}" converter="javax.faces.Long"/>
+
+        <f:viewAction action="#{adminMB.inicializaEdicaoInclusao()}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+        <div class="ui-g">
+            <div class="ui-g-12">
+
+
+
+                <p:outputLabel value="#{adminMB.usuario.id == null ? 'Cadastro de novo administrador' : 'Edição de administrador'}" 
+                               style="font-weight: bold; font-size: 25px;" />
+                <div class="card">
+
+                    <h:form id="frmCadastroAdmin">
+
+                        <p:growl id="messages" showDetail="false" sticky="true" autoUpdate="true" />  
+
+                        <p:panelGrid columns="1" columnClasses="ui-grid-col-12" styleClass="ui-panelgrid-blank" layout="grid" style="margin-bottom: 25px;">
+
+                            <p:outputLabel value="Email:" for="descricao" indicateRequired="false" />
+                            <p:inputText id="descricao" type="mail" required="true"  requiredMessage="E-mail Obrigatório!" maxlength="100" 
+                                         value="#{adminMB.usuario.email}"/>
+
+
+                            <p:outputLabel value="Senha:" for="senha" indicateRequired="false"  />
+                            <p:password id="senha" required="true" requiredMessage="Senha Obrigatório" value="#{adminMB.usuario.senha}"   
+                                        feedback="true" match="confirmaSenha" promptLabel="Informe uma senha" 
+                                        redisplay="true" weakLabel="Fraca" goodLabel="Boa" strongLabel="Forte" maxlength="200"/>
+
+                            <p:outputLabel value="Confirmar Senha:" for="confirmaSenha" indicateRequired="false"  />
+                            <p:password id="confirmaSenha" required="true" requiredMessage="Confirmação de senha Obrigatória"   
+                                        validatorMessage="Por favor replique a senha corretamente"
+                                        promptLabel="Informe uma senha" redisplay="true" maxlength="100"/>
+
+
+
+
+                        </p:panelGrid>
+
+
+                        <p:toolbar styleClass="toolbarPadrao">
+                            <f:facet name="left">
+
+                                <p:commandButton process="@form" action="#{adminMB.salvar()}" value="Salvar" icon="fa fa-floppy-o" />
+                            </f:facet>
+
+                            <f:facet name="right">
+                                <p:button value="Cancelar" icon="fa fa-ban" class="btn-danger" outcome="/pages/admin/listausuariosadmin.xhtml" />
+                            </f:facet>
+
+                        </p:toolbar>
+
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

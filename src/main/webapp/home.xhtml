@@ -1,0 +1,132 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template/template.xhtml"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+    <ui:define name="title">Dashboard</ui:define>
+
+    <f:metadata>
+        <f:viewAction action="#{dashboardMB.inicializaDashBoard()}"/>
+    </f:metadata>
+
+
+    <ui:define name="content">
+
+        <p:outputLabel value="Dashboard" style="font-weight: bolder; font-size: 20px;"/>
+        <h:form id="formHome">
+            <p:toolbar styleClass="toolbarPadrao" style="margin-top: 10px;">
+
+                <f:facet name="left">
+                    
+                    <p:panelGrid columns="3">
+                    <p:selectOneMenu id="classe"  style="width: 200px;"  
+                                     value="#{dashboardMB.classe}">
+                        <f:selectItem itemLabel="Selecione uma classe"/>
+                        <f:selectItems value="#{dashboardMB.listaClasse}" var="classe" itemValue="#{classe}" itemLabel="#{classe.descricao}" />
+                        <p:ajax event="itemSelect" process="@this"/> 
+                    </p:selectOneMenu>
+                    
+                    <p:inputText id="nome" value="#{dashboardMB.nome}" placeholder="Nome">
+                        <p:ajax event="blur" process="@this"/> 
+                    </p:inputText>
+                    
+                    <p:commandButton value="Filtro" action="#{dashboardMB.filtro()}" process="@this formHome:classe formHome:nome" update="@form"/>
+                    
+                    </p:panelGrid>
+                </f:facet>
+
+
+            </p:toolbar>
+            <div class="layout-dashboard">
+
+                <div class="ui-g">
+
+
+
+
+
+
+
+                    <p:growl id="alert"/>
+
+                    <p:repeat id="rptDash" value="#{dashboardMB.lista}" var="personagem" rendered="#{dashboardMB.lista.size() != 0}" >
+                        <div class="ui-g-12 ui-md-12 ui-lg-4">
+
+
+
+
+                            <p:commandLink process="@this" action="#{dashboardMB.redirecionaPaginaEdição()}">
+                                <f:setPropertyActionListener target="#{dashboardMB.personagem}" value="#{personagem}"/>
+                                <p:panel styleClass="profile" toggleTitle="Clique para editar o personagem">
+                                    <div class="bg-image">
+                                    </div>
+                                    <div class="profile-info">
+                                        <o:graphicImage value="#{personagem.imagem}" style="border: #ffffff; border-width: medium;" dataURI="true" class="profile-image"/>
+
+
+                                        <span class="name">#{personagem.nome}</span>
+                                        <div>
+                                            <i class="fa fa-briefcase"></i>
+                                            <span class="job">#{personagem.classe.descricao}</span>
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-location-arrow"></i>
+                                            <span class="location">#{personagem.especialidades}</span>
+                                        </div>
+                                        <div>
+                                            <div class="profile-numbers">
+                                                <span class="header">Vida</span>
+                                                <span class="number">#{personagem.vida}</span>
+                                            </div>
+                                            <div class="profile-numbers">
+                                                <span class="header">Defesa</span>
+                                                <span class="number">#{personagem.defesa}</span>
+                                            </div>
+                                            <div class="profile-numbers">
+                                                <span class="header">Dano</span>
+                                                <span class="number">#{personagem.dano}</span>
+                                            </div>
+
+                                            <div class="profile-numbers">
+                                                <span class="header">Vel. Ataque</span>
+                                                <span class="number">#{personagem.velocidadeAtaque}</span>
+                                            </div>
+
+                                            <div class="profile-numbers">
+                                                <span class="header">Vel. Mov.</span>
+                                                <span class="number">#{personagem.velocidadeMovimento}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </p:panel>
+                            </p:commandLink>
+
+
+
+
+                        </div>
+                    </p:repeat>
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

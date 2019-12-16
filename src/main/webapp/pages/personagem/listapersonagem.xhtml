@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/template/template.xhtml"
+                xmlns:o="http://omnifaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+
+    <ui:define name="title">Lista de personagens</ui:define>
+    <link rel="shortcut icon" type="image/png" href="resources/ecuador-layout/images/favicon.ico"/>
+    <f:metadata>
+        <f:viewAction action="#{personagemMB.inicializaTela()}" />
+    </f:metadata>
+
+
+    <ui:define name="content">
+
+
+
+        <div class="ui-g">
+            <div class="ui-g-12">
+
+                <p:outputLabel value="Personagens" style="font-weight: bolder; font-size: 16px;"/>
+                <div class="card">
+
+
+                    <h:form id="formPersonagens">
+                        <p:growl id="alert" showDetail="true" autoUpdate="true"/>
+
+
+
+                        <p:dataTable id="tablePersonagem" var="registro" value="#{personagemMB.lista}" reflow="true" rows="15" 
+                                     paginator="true" emptyMessage="Nenhum registro encontrado" 
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
+                                     {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15"  currentPageReportTemplate="[ Exibindo de {startRecord} a {endRecord} no total de {totalRecords}
+                                     - Página: {currentPage}/{totalPages} ]" paginatorPosition="bottom" >
+
+                            <f:facet name="header">
+
+
+                                <p:commandButton id="toggler" type="button" value="Colunas" style="margin-left: 90%;"  icon="fa fa-columns" />
+                                <p:columnToggler datasource="tablePersonagem" trigger="toggler" />
+                            </f:facet>
+
+
+                            <p:column headerText="Icone" >
+                                <center> <o:graphicImage value="#{registro.imagem}" dataURI="true" style="max-width: 100px; max-height:60px;"/> </center> 
+                            </p:column>
+
+                            <p:column headerText="Nome" sortBy="#{registro.nome}" filterBy="#{registro.nome}">
+                                <center> <h:outputText value="#{registro.nome}" /></center> 
+                            </p:column>
+
+                            <p:column headerText="Classe" sortBy="#{registro.classe.descricao}" filterBy="#{registro.classe.descricao}">
+                                <center> <h:outputText value="#{registro.classe.descricao}" /></center> 
+                            </p:column>
+
+
+                            <p:column headerText="Edição" style="width: 10%;">
+                                <center> 
+                                    <p:button icon="fa fa-edit" title="Edição"  outcome="/pages/personagem/cadastropersonagem.xhtml">
+                                        <f:param name="id" value="#{registro.id}" />
+                                    </p:button> 
+                                </center> 
+                            </p:column>
+
+                            <p:column headerText="Exclusão" style="width: 10%;">
+                                <center>
+                                    <p:commandButton  icon="fa fa-trash-o" title="Exclusão" process="@form"  class="btn-danger" 
+                                                      update="@form" action="#{personagemMB.excluir()}">
+                                        <p:confirm header="Confirmação" message="Deseja deletar este registro?" icon="pi pi-exclamation-triangle" />
+                                        <f:setPropertyActionListener target="#{personagemMB.personagem}" value="#{registro}"/> 
+                                    </p:commandButton>
+                                </center>    
+                            </p:column>
+
+                        </p:dataTable>
+
+                        <p:toolbar styleClass="toolbarPadrao">
+                            <f:facet name="left">
+
+                                <p:button value="Personagem" icon="fa fa-plus" outcome="/pages/personagem/cadastropersonagem.xhtml"/>
+
+                            </f:facet>
+
+                        </p:toolbar>
+
+
+
+                    </h:form>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+    </ui:define>
+
+</ui:composition>

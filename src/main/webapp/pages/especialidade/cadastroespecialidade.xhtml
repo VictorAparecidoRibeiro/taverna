@@ -1,0 +1,66 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:o="http://omnifaces.org/ui"
+                template="/WEB-INF/template/template.xhtml">
+
+    <ui:define name="title">#{especialidadeMB.idTrocaPagina == null ? 'Cadastro de nova especialidade' : 'Edição de especialidade'}</ui:define>
+
+    <f:metadata>
+        <!-- Chama incializar quando entrar no form, pegando o id passado pela URL -->
+        <f:viewParam name="id" value="#{especialidadeMB.idTrocaPagina}" converter="javax.faces.Long"/>
+
+        <f:viewAction action="#{especialidadeMB.inicializaEdicaoInclusao()}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+        <div class="ui-g">
+            <div class="ui-g-12">
+
+
+
+                <p:outputLabel value="#{especialidadeMB.idTrocaPagina == null ? 'Cadastro de nova especialidade' : 'Edição de especialidade'}" 
+                               style="font-weight: bold; font-size: 25px;" />
+                <div class="card">
+
+                    <h:form id="frmCadastroEspecialidade">
+
+                        <p:growl id="messages" showDetail="false" sticky="true" autoUpdate="true" />  
+
+                        <p:panelGrid columns="1" columnClasses="ui-grid-col-12" styleClass="ui-panelgrid-blank" layout="grid" style="margin-bottom: 25px;">
+
+                            <p:outputLabel value="Descrição:" for="descricao" indicateRequired="false" />
+                            <p:inputText id="descricao"  required="true"  requiredMessage="Descrição Obrigatória!" maxlength="200" 
+                                         value="#{especialidadeMB.especialidade.descricao}"/>
+
+
+                          
+
+
+
+
+                        </p:panelGrid>
+
+
+                        <p:toolbar styleClass="toolbarPadrao">
+                            <f:facet name="left">
+
+                                <p:commandButton process="@form" action="#{especialidadeMB.salvar()}" value="Salvar" icon="fa fa-floppy-o" />
+                            </f:facet>
+
+                            <f:facet name="right">
+                                <p:button value="Cancelar" icon="fa fa-ban" class="btn-danger" outcome="/pages/especialidade/listaespecialidade.xhtml" />
+                            </f:facet>
+
+                        </p:toolbar>
+
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

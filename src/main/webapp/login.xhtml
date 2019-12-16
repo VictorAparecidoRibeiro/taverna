@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+            <link rel="shortcut icon" type="image/png" href="resources/ecuador-layout/images/favicon.ico"/>
+        </f:facet>
+        <title>Login</title>
+    </h:head>
+
+    <h:body styleClass="login-body">
+
+        <f:metadata>
+            <o:viewParam name="sessaoExpirou" value="#{loginMB.sessaoExpirou}" />
+        </f:metadata>
+
+        <div class="login-topbar">
+
+        </div>
+        <div class="login-image">
+            <div class="login-panel">
+                <h:form id="frmLogin">
+
+                    <p:graphicImage name="images/large_logo-taverna.png" style="height: 100px; width: 100px;" library="ecuador-layout"/> 
+                    <p:inputText required="true" requiredMessage="Email obrigatório"  id="email" type="email" placeholder="Usuário" value="#{loginMB.email}"/>
+                    <p:password id="senha" required="true" requiredMessage="Senha obrigatória" placeholder="Senha" value="#{loginMB.senha}"/>
+                    <div class="checkbox-container">
+
+                        <p:commandButton value="Login" action="#{loginMB.login()}" process="@form" update="@form" />
+
+                        <p:ajaxStatus styleClass="layout-ajax-loader">
+                            <f:facet name="start">
+                                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                            </f:facet>
+
+                            <f:facet name="complete">
+                                <h:outputText value="" />
+                            </f:facet>
+                        </p:ajaxStatus>
+                    </div>
+
+                    <p:growl id="messages" autoUpdate="true" />
+
+
+                    <!-- Renderiza essa mensagem quando ocorre time-out -->
+                    <p:panel rendered="#{loginMB.sessaoExpirou eq 'S'}" style=" margin-top: 20px; background-color: #f2dede; border-color: #eed3d7;">
+                        <h:panelGrid columns="1">
+                            <h:outputLabel value="Sua sessão expirou por motivo de inatividade - 30 minutos."/>
+                            <h:outputLabel value="Por favor, faça login novamente." style="font-weight: bold; color: #b94a48" />
+                        </h:panelGrid>
+                    </p:panel>   
+
+                </h:form>
+
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+        <h:outputStylesheet name="css/layout-indigo.css" library="ecuador-layout" />
+
+
+    </h:body>
+
+</html>

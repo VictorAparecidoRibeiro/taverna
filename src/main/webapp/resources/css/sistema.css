@@ -1,0 +1,750 @@
+@charset "utf-8";
+
+body {
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0%;
+    font-weight: normal;    
+}
+
+header {        
+    height: 130px;            
+}
+
+footer {
+    position: fixed;
+    bottom:0;
+    width:100%;    
+    margin: 0;
+}
+
+.barraCor {
+    background: #49A2E7;        
+}
+
+.barraCorRodape {
+    background: #49A2E7;    
+    height: 5px;
+    border: 0;
+    padding: 0
+}
+
+.barraCorAntigo {
+    background: #004869;    
+    background: -webkit-linear-gradient(#0095da, #004869);        
+    background: -moz-linear-gradient(#0095da, #004869);
+    background: -ms-linear-gradient(#0095da, #004869);            
+
+    border-bottom: 1px solid #CACACA;    
+    box-shadow: 0 0 7px #888;        
+}
+
+.barraCorRodapeAntigo {
+    background: #004869;    
+    background: -webkit-linear-gradient(#0095da, #004869);        
+    background: -moz-linear-gradient(#0095da, #004869);
+    background: -ms-linear-gradient(#0095da, #004869);            
+
+    border-bottom: 1px solid #CACACA;    
+    box-shadow: 0 0 7px #888;        
+    height: 13px;
+    border: 0;
+    padding: 0
+}
+
+
+.barraCorRx {
+    background: black;
+}
+
+.barraCorRodapeRx {
+    background: black;    
+    height: 8px;
+    border: 0;
+    padding: 0
+}
+
+
+#conteudo {
+    padding: 0px 8px;        
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+    padding: 0px;
+    margin: 0px
+}
+
+#login-dialog {
+    width: 290px;
+    margin: auto;
+    margin-top: 150px;
+}
+
+
+.grid-login {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-top: 8px;
+    padding: 10px;
+    width: 100%;
+}
+
+.rotulo {
+    width: 150px;
+    text-align:right;
+}
+
+.rotuloDireita {
+    width: 200px;
+    text-align:right;
+}
+
+.rotulo100 {
+    width: 100px;
+    text-align:right;
+}
+
+.rotulo50 {
+    width: 50px !important;
+    text-align:right;
+}
+
+.rotulo25 {
+    width: 25px;
+    text-align:right;
+}
+
+
+.campo {
+    width: 150px;
+    text-align:left;
+}
+
+.alinhaCentro {    
+    text-align:center;
+}
+
+.alinhaDireita {    
+    text-align:right;
+}
+
+.alinhaEsquerda {    
+    text-align:left;
+}
+
+.colunaGrid {
+    width: 50%;
+}
+
+.colunaGridDireita {
+    text-align:right;
+    width: 10%;
+}
+
+.colunaGridEsquerda {
+    text-align:left;
+    width: 50%;
+}
+
+
+.ui-icon.fa {
+    text-indent: 0px !important;            
+    background-image:none;    
+}
+
+.ui-panelgrid td {/* height: 30px
+
+    */
+}
+
+.ui-datatable tbody tr {
+    height: 10px !important;    
+}
+
+.ui-datatable-even {
+    height: 10px;    
+}
+
+.ajax-status {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+}
+
+/* tira margem do titulo do dialog (em todos) */
+.ui-dialog .ui-dialog-title {
+    margin: 0px !important;
+}
+/* tira margem do icone de fechar do dialog (em todos) */
+.ui-dialog.ui-widget-content .ui-dialog-titlebar-close {
+    margin-top: 5px !important;
+}
+
+.ui-selectmanycheckbox td {
+    border-width: 0px !important;
+    padding: 0px !important;
+}
+
+.ui-selectmanycheckbox td label {
+    padding-right: 10px;
+}
+
+.produto-tabela {
+    width: 100% !important;
+}
+
+.produto-tabela input {
+    width: 99%;
+}
+
+
+/* Coloca o botao do autocomplete com posi??o relativa (era absolute) */
+.relativeButtonAutoComplete .ui-autocomplete-dropdown {
+    position: relative !important;
+}
+
+/* customizo progress bar */
+.ui-progressbar > .ui-progressbar-label{
+    margin-top: 5px !important;
+}
+.ui-progressbar-label{
+    margin-top: 5px !important;
+}
+.ui-progressbar .ui-progressbar-value.ui-widget-header{
+    height: 100% !important;
+}
+
+
+/* Customiza TabView - in?cio */
+.ui-tabs .ui-tabs-panel {    
+    padding: 0.5em 0.2em !important;
+}
+
+.ui-tabs {
+    padding: 0px !important;
+}
+
+.ui-tabs .ui-tabs-nav {
+    margin: -1px !important;
+    text-align: left !important;
+}
+
+.ui-tabs.ui-tabs-top > .ui-tabs-nav {
+    padding: 0px !important;
+}
+/* Customiza TabView - fim */
+
+
+/* Customiza campos do dialog de detalhe do prestador no guia medico */
+.content-noborder .ui-widget-content {
+    border: none;
+}
+
+.panelgrid-nopadding .ui-panelgrid .ui-panelgrid-cell{
+    padding: 0px;
+}
+
+.datalistHorizontal {
+    display: inline;
+    float: right;
+    margin-right: 5px;
+    margin-top: 0px;
+}
+
+.layoutunit-height {
+    height: 44px !important;
+    padding: 0px !important;
+}
+/* Customiza campos do dialog de detalhe do prestador no guia medico */
+
+
+/* Customiza fileupload para fotos */
+.fileupload-buttonbarFoto > .ui-fileupload-buttonbar {
+    border: 0px !important;
+    padding: 0px !important;
+    background: none !important;
+}
+
+.fileupload-contentFoto > .ui-fileupload-content {
+    display: none !important;
+}
+
+.ui-icon-plusthick {
+    background: url('/RunCoach/resources/images/search.png') no-repeat !important;
+}
+/* Customiza fileupload para fotos */
+
+
+
+/* Layout padrao guia medico ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* altera a cor da borda */
+.borderPadraoGuia > .ui-widget-content {
+    border: 1px solid #d0f7df !important;
+}
+
+/* altera a cor do fundo (datalist,panel,datatable-header,datatable-paginator) */
+.backgroundPadraoGuia .ui-datalist-header, 
+.backgroundPadraoGuia .ui-panel-titlebar, 
+.backgroundPadraoGuia th, 
+.backgroundPadraoGuia .ui-widget-header {
+    background-image: -webkit-linear-gradient(#F8FFF8, #d0f7df) !important;
+    background-image: -moz-linear-gradient(#F8FFF8, #d0f7df) !important;
+    background-image: -ms-linear-gradient(#F8FFF8, #d0f7df) !important;
+}
+/* altera a cor do linha da datatable (linhas odd) */
+.linhaOdddatatablePadraoGuia .ui-datatable-odd {
+    background-color: #F8FFF8;
+}
+/* altera a cor do mouse over na linha da datatable */
+.selectiondatatablePadraoGuia .ui-state-hover {
+    background-color: #d0f7df;
+}
+
+/* altera a cor do fundo do toolBar */
+.toolbarPadraoGuia {
+    margin-top: 15px;
+    background-image: linear-gradient(#F8FFF8, #d0f7df) !important;
+    border: 1px solid #d0f7df !important;
+}
+.toolbarPadraoGuia > .ui-toolbar-group-left {
+    float: none !important;
+    text-align: center;
+}
+/* Layout padrao guia medico ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+/* Layout padrao profsyst */
+.panelPadrao {
+    margin-top: 20px;
+    width: 70%;    
+    margin-bottom: 25px;
+}
+
+.panelPadrao > .ui-panel-titlebar > .ui-panel-title {
+    font-size: medium !important;
+}
+
+.toolbarPadrao {
+    margin-top: 15px;    
+}
+
+.datatablePadrao {    
+    margin-top: 20px;    
+}
+
+.panelgridPadrao {    
+    margin-top: 15px;   
+    width: 100%;
+}
+
+.botaoPadrao {        
+    width: 100px;
+}
+
+.botaoGridPadrao {        
+    height: 22px;
+}
+
+.toolbarDetalhe {
+    margin-top: 15px;    
+    text-align: center;
+    width: 50%;    
+}
+.toolbarDetalhe > .ui-toolbar-group-left {
+    float: none !important;
+    text-align: center;
+}
+
+.toolbarExclusao {        
+    width: 70%;
+}
+
+.fieldsetPopUp  {        
+    background-color: #f5f5f5 !important;
+}
+
+
+/* Altera??o para aplicar css do bootstrap nas classes de bot?o padr?o (o primefaces sobreescreve o do bootstrap) */
+.btn-primary, .ui-button.btn-primary {
+    color: #fff;
+    background-color: #337AB7;
+    background-image: none;
+    text-shadow: none;
+}
+.btn-primary, .ui-button.btn-primary:hover {
+    background-color: #286090;
+}
+
+.btn-success, .ui-button.btn-success {
+    color: #fff;
+    background-color: #5CB85C;
+    background-image: none;
+    text-shadow: none;
+}
+.btn-success, .ui-button.btn-success:hover {
+    background-color: #449D44;
+}
+
+.btn-info, .ui-button.btn-info {
+    color: #fff;
+    background-color: #5BC0DE;
+    background-image: none;
+    text-shadow: none;
+}
+.btn-info, .ui-button.btn-info:hover {
+    background-color: #31B0D5;
+}
+
+.btn-warning, .ui-button.btn-warning {
+    color: #fff;
+    background-color: #F0AD4E;
+    background-image: none;
+    text-shadow: none;
+}
+.btn-warning, .ui-button.btn-warning:hover {
+    background-color: #EC971F;
+}
+
+.btn-danger, .ui-button.btn-danger {
+    color: #fff;
+    background-color: #D9534F;
+    background-image: none;
+    text-shadow: none;
+}
+.btn-danger, .ui-button.btn-danger:hover {
+    background-color: #C9302C;
+}
+/* Altera??o para aplicar css do bootstrap nas classes de bot?o padr?o (o primefaces sobreescreve o do bootstrap) */
+
+/* Disabled mais escuro */
+.ui-state-disabled {
+    opacity: .90 !important;
+}
+
+/* Datalist na horizantal */
+.horizontal {
+    display: inline;
+    float : left;
+    width: 65px;
+    padding: 0px 0px;
+}
+.ui-datalist-data {
+    overflow:auto;
+}
+
+/* coloca margem na direita de cada itemMenu */
+.ui-menuitem-text {
+    margin-right: 0.4em;
+}
+
+/* retira o * dos campos required ou @NotNull */
+.ui-outputlabel-rfi {
+    display: none;
+}
+
+/* dimunui tamanho do dia no schedule */
+.ui-panelgrid td .fc-day-number{
+    height: 10px !important;
+}
+
+/* ajusta altura dos combos com os demais */
+.ui-selectonemenu { 
+    display: inline-block; 
+    vertical-align: top; 
+}
+
+.ui-inputswitch { 
+    display: inline-block; 
+    vertical-align: top !important;
+}
+
+.ui-chkbox {
+    display: inline-block; 
+    vertical-align: middle !important;    
+}
+
+/* cores dos treinos*/
+.cor-treino-proposto{
+    color: #0095da !important;    
+}
+
+.cor-treino-feito{
+    color: #449D44 !important;        
+}
+
+.cor-treino-perdido{
+    color: #D9534F !important;    
+}
+
+.cor-treino-avulso{
+    color: #EC971F !important;    
+}
+
+.treino-proposto{
+    background: #0095da !important;
+    border-color: #0095da !important;
+    text-align: center;
+    max-height: 50px;
+    min-height: 20px;
+    cursor: pointer;
+}
+
+.treino-proposto-semanal{
+    background: #0095da !important;
+    border-color: #0095da !important;
+    text-align: center;
+    max-height: 400px;
+    min-height: 50px;
+    cursor: pointer;
+}
+
+.treino-feito{
+    background: #449D44 !important;
+    border-color: #449D44 !important;    
+    text-align: center;
+    max-height: 50px;
+    min-height: 20px;
+    cursor: pointer;
+}
+
+.treino-feito-semanal{
+    background: #449D44 !important;
+    border-color: #449D44 !important;    
+    text-align: center;
+    max-height: 200px;
+    min-height: 50px;
+    cursor: pointer;
+}
+
+.treino-perdido{
+    background: #D9534F !important;
+    border-color: #D9534F !important;    
+    text-align: center;
+    max-height: 50px;
+    min-height: 20px;
+    cursor: pointer;
+}
+
+.treino-perdido-semanal{
+    background: #D9534F !important;
+    border-color: #D9534F !important;    
+    text-align: center;
+    max-height: 200px;
+    min-height: 50px;
+    cursor: pointer;
+}
+
+.treino-avulso{
+    background: #EC971F !important;
+    border-color: #EC971F !important;    
+    text-align: center;
+    max-height: 50px;
+    min-height: 20px;
+    cursor: pointer;
+}
+
+.treino-avulso-semanal{
+    background: #EC971F !important;
+    border-color: #EC971F !important;    
+    text-align: center;
+    max-height: 200px;
+    min-height: 50px;
+    cursor: pointer;
+}
+
+
+/* troco cor padrão do calendário*/
+.fc-today{
+    color: #333333 !important;
+    background: #f5f5f5 !important;
+}
+
+.fc-day-grid-event > .fc-content{
+    max-height: 50px;
+}
+
+/* cores dos status financeiros*/
+.corStatusPago{
+    color:#008000;
+}
+
+.corStatusNaoPago{
+    color:#0000FF;
+}
+
+.corStatusAtrasado{
+    color:#FF0000;
+}
+
+/* linha em negrito na datatable*/
+.linhaNegrito{
+    font-weight: bolder;
+}
+
+.linhaNegrito .ui-state-hover{
+    font-weight: bolder !important;        
+}
+
+/* titulo maior no header dos avisos */
+.ui-datascroller-header {
+    font-size: medium;
+}
+
+
+.catalagoLogo {
+    text-align:left;
+    min-width: 200px;
+    width: 200px;
+}
+
+.prof-panel-grid .ui-panelgrid-content{
+    border: none;
+}
+
+.planilhaDiaSemana {
+    background-color: #f5f5f5 !important;        
+}
+
+.planilhaAccordion .ui-accordion-content{
+    padding: 0 !important;
+}
+
+.planilhaAccordion .ui-accordion-header{
+    background-color: #fafafa !important;  
+    text-align: left;
+}
+
+.toolbarPlanilha {    
+    text-align: center;    
+}
+.toolbarPlanilha > .ui-toolbar-group-left {
+    float: none !important;
+    text-align: center;
+}
+
+/*reponsive nas grids com reflow */
+@media ( max-width: 650px ) { /* Default 35em */
+    .ui-datatable-reflow thead th,
+    .ui-datatable-reflow tfoot td {
+        display: none !important;
+    }
+
+    .ui-datatable-reflow .ui-datatable-data td { 
+        text-align: left !important;
+        display: block !important;
+        border: 0px none !important;
+        width: 100% !important;
+        -webkit-box-sizing: border-box !important;
+        -moz-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        float: left !important;
+        clear: left !important;
+    }
+
+    .ui-datatable-reflow .ui-datatable-data.ui-widget-content {
+        border: 0px none !important;
+    }
+
+    .ui-datatable-reflow .ui-datatable-data tr.ui-widget-content {
+        border-left: 0px none !important;;
+        border-right: 0px none !important;;
+    }
+
+    .ui-datatable-reflow .ui-datatable-data td .ui-column-title { 
+        padding: .4em !important;; 
+        min-width: 35% !important; 
+        display: inline-block !important;
+        margin: -.4em 1em -.4em -.4em !important;
+    }
+}
+
+
+/* Datalist na horizantal */
+.horizontal-msg {
+    display: inline;
+    float : left;
+    width: 140px;
+    padding: 0px 0px;
+}
+
+/* Usado no topo de mensagens */
+.bolinha-acima {
+    background-color: #EB4A40;
+    color: #ffffff;
+    border-radius: 100%;      
+    position: relative;    
+    top: -15px;
+    right: 5px;      
+    padding: 4px 8px;
+    font-size: small;
+    font-weight: bold;
+    text-align: center;    
+}
+
+/* Bloqueios de horários na agenda */
+.agenda-block{
+    background: #f2dede !important;    
+    border: none !important;    
+    cursor: not-allowed;
+}
+
+.agenda-block .fc-content{
+    display: none !important;
+}
+
+.agenda-agendado{
+    background: #0095da !important;
+    border-color: #0095da !important;
+    text-align: left;
+    cursor: pointer;
+}
+
+.agenda-ja-realizado{
+    background: #449D44 !important;
+    border-color: #449D44 !important;    
+    text-align: left;
+    cursor: pointer;
+}
+
+.agenda-cancelado{
+    background: #D9534F !important;
+    border-color: #D9534F !important;    
+    text-align: left;   
+    cursor: pointer;
+}
+
+.agenda-nao-compareceu{
+    background: #EC971F !important;
+    border-color: #EC971F !important;    
+    text-align: left;  
+    cursor: pointer;
+}
+
+/* tira o border do panel da home */
+.ui-datascroller-content {
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* faz oa tabview se ajustarem a celulares */
+
+@media screen and (max-width: 810px) {
+    .ui-tabs.ui-tabs-top > .ui-tabs-nav li{
+        width: 100% !important;
+    }
+}
+
+/* tira borda de panelgrid */    
+.no-border > .ui-panelgrid-content{
+    border: 0px solid #c7cdd1 !important;
+}
+
+/* tira scroll chato datatable */    
+.ui-datatable-tablewrapper {
+    overflow: hidden !important;
+}

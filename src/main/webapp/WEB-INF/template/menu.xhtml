@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ecuador">
+
+    <div class="layout-sidebar">
+        <div class="nano">
+            <div class="nano-content menu-scroll-content">
+                <h:form id="menuform">
+                    <div class="layout-menu-title">MENU</div>
+                    <pe:menu widgetVar="me">
+                        <p:menuitem id="om_dashboard" value="Home" icon="fa fa-home" outcome="/home.xhtml" rendered="#{loginMB.normal}" />
+                        <p:menuitem id="om_classe" value="Classe" icon="fa fa-address-card" outcome="/pages/classe/listaclasses.xhtml" rendered="#{loginMB.normal}" />
+                        <p:menuitem id="om_especialidade" value="Especialidade" icon="fa fa-magic" outcome="/pages/especialidade/listaespecialidade.xhtml" rendered="#{loginMB.normal}" />
+                        <p:menuitem id="om_person" value="Personagem" icon="fa fa-users" outcome="/pages/personagem/listapersonagem.xhtml" rendered="#{loginMB.normal}" />
+                        
+                        <p:menuitem id="logout" value="Logout" process="@this" action="#{loginMB.logout()}" icon="fa fa-sign-out"/>
+
+             
+                    </pe:menu>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</ui:composition>

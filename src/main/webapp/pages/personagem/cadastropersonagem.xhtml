@@ -1,0 +1,165 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:o="http://omnifaces.org/ui"
+                template="/WEB-INF/template/template.xhtml">
+
+    <ui:define name="title">#{personagemMB.idTrocaPagina == null ? 'Cadastro de novo personagem' : 'Edição de personagem'}</ui:define>
+
+    <f:metadata>
+        <!-- Chama incializar quando entrar no form, pegando o id passado pela URL -->
+        <f:viewParam name="id" value="#{personagemMB.idTrocaPagina}" converter="javax.faces.Long"/>
+
+        <f:viewAction action="#{personagemMB.inicializaEdicaoInclusao()}"/>
+    </f:metadata>
+
+    <ui:define name="content">
+        <div class="ui-g">
+            <div class="ui-g-12">
+
+
+
+                <p:outputLabel value="#{personagemMB.idTrocaPagina == null ? 'Cadastro de novo personagem' : 'Edição de personagem'} "
+                               style="font-weight: bold; font-size: 25px;" />
+                <div class="card">
+
+                    <h:form id="frmCadastroPersonagem">
+
+                        <p:growl id="messages" showDetail="false" sticky="true" autoUpdate="true" />  
+
+                        <p:panelGrid columns="1" columnClasses="ui-grid-col-12" styleClass="ui-panelgrid-blank" layout="grid" style="margin-bottom: 25px;">
+
+                            <p:fileUpload fileUploadListener="#{personagemMB.handleFileUpload}"
+                                          label="Procurar"
+                                          uploadLabel="Importar"
+                                          cancelLabel="Cancelar"
+                                          auto="true"
+                                          fileLimit="1"
+                                          mode="advanced"
+                                          
+                                          allowTypes="/(\.|\/)(gif|jpe?g|png|PNG|GIF|JPE|JPG)$/"
+                                          process="@this" update="gridIcone"
+                                          invalidSizeMessage="Imagem excede tamanho permitido"
+                                          invalidFileMessage="Apenas imagens png e jpe"
+                                          fileLimitMessage="Apenas uma imagem pode ser adicionada por vez"
+                                          style="width: 40%;"
+                                          >
+                            </p:fileUpload>          
+
+
+                            <p:panelGrid style="margin-top: 15px;" id="gridIcone" columns="1" styleClass="ui-panelgrid-blank" layout="grid" 
+                                         columnClasses="ui-grid-col-3,ui-grid-col-2,ui-grid-col-2">
+                                <p:outputLabel value="Imagem"/>
+
+
+                                <o:graphicImage value="#{personagemMB.personagem.imagem}" 
+                                                dataURI="true" style="max-width: 300px; max-height:180px;"/>     
+                            </p:panelGrid>
+
+                            <p:outputLabel value="Nome:" for="nome" indicateRequired="false" />
+                            <p:inputText id="nome"  required="true"  requiredMessage="Nome Obrigatório!" style="width: 500px;" maxlength="200" 
+                                         value="#{personagemMB.personagem.nome}"/>
+
+                            <p:outputLabel value="Classe:" for="classe" indicateRequired="false"  />
+                            <p:selectOneMenu id="classe" required="true" requiredMessage="Classe Obrigatória!" style="width: 500px;"  
+                                             value="#{personagemMB.personagem.classe}">
+                                <f:selectItem itemLabel="Selecione uma classe"/>
+                                <f:selectItems value="#{personagemMB.listaClasse}" var="classe" itemValue="#{classe}" itemLabel="#{classe.descricao}" />
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Vida:" for="vida" indicateRequired="false" />
+                            <p:inputNumber minValue="0" id="vida"  required="true"  requiredMessage="Vida Obrigatória!" maxlength="200" 
+                                           value="#{personagemMB.personagem.vida}" size="64"/>
+
+                            <p:outputLabel value="Dano:" for="dano" indicateRequired="false" />
+                            <p:inputNumber minValue="0" id="dano"  required="true"  requiredMessage="Dano Obrigatório!" maxlength="200" 
+                                           value="#{personagemMB.personagem.dano}" size="64"/>
+
+                            <p:outputLabel value="Defesa:" for="defesa" indicateRequired="false" />
+                            <p:inputNumber minValue="0" id="defesa"  required="true"  requiredMessage="Defesa Obrigatória!" maxlength="200" 
+                                           value="#{personagemMB.personagem.defesa}" size="64"/>
+
+                            
+                            <p:outputLabel value="Velocidade de ataque:" for="velataque" indicateRequired="false" />
+                            <p:inputNumber minValue="0" id="velataque"  required="false"  requiredMessage="Nome Obrigatório!" maxlength="200" 
+                                           value="#{personagemMB.personagem.velocidadeAtaque}" size="64"/>
+
+                            <p:outputLabel value="Velocidade de movimento:" for="velmov" indicateRequired="false" />
+                            <p:inputNumber minValue="0" id="velmov"  required="false"  requiredMessage="Nome Obrigatório!" maxlength="200" 
+                                           value="#{personagemMB.personagem.velocidadeMovimento}" size="64"/>
+
+
+                            <p:outputLabel value="Observação:" for="obs" indicateRequired="false" />
+                            <p:inputTextarea id="obs"  required="false"  requiredMessage="Nome Obrigatório!" maxlength="200" 
+                                             value="#{personagemMB.personagem.observacao}" style="width: 500px;"/>
+
+
+
+                            <p:outputLabel value="Especialidade:" for="classe" indicateRequired="false"  />
+
+                            <p:columnGroup>
+                                <p:selectOneMenu id="especialidade" required="true" requiredMessage="Especialidade Obrigatória!" style="width:200px; height: 40px;" 
+                                                 value="#{personagemMB.especialidade}">
+                                   
+                                    <f:selectItems value="#{personagemMB.listaEspecialidade}" var="especialidade" itemValue="#{especialidade}" 
+                                                   itemLabel="#{especialidade.descricao}" />
+                                    <p:ajax event="itemSelect" process="@this"/> 
+                                </p:selectOneMenu>
+
+                                <p:commandButton value="Adicionar" icon="fa fa-plus" action="#{personagemMB.adicionaEspecialidade()}" process="especialidade @this" 
+                                                 update="tablePersonagemEspecialidade" style="margin-left: 10px;"/>
+                            </p:columnGroup>
+
+
+                        </p:panelGrid>
+
+                        <p:dataTable id="tablePersonagemEspecialidade" var="registro" value="#{personagemMB.personagem.listaEspecialidade}" reflow="true" rows="15" 
+                                     paginator="true" emptyMessage="Nenhum registro encontrado" 
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
+                                     {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15"  currentPageReportTemplate="[ Exibindo de {startRecord} a {endRecord} no total de {totalRecords}
+                                     - Página: {currentPage}/{totalPages} ]" paginatorPosition="bottom" >
+
+
+
+                            <p:column headerText="Descrição" sortBy="#{registro.especialidade.descricao}" filterBy="#{registro.especialidade.descricao}">
+                                <center> <h:outputText value="#{registro.especialidade.descricao}" /></center> 
+                            </p:column>
+
+
+                            <p:column headerText="Exclusão" style="width: 10%;">
+                                <center>
+                                    <p:commandButton  icon="fa fa-trash-o" title="Exclusão" process="@this"  class="btn-danger" 
+                                                      update="tablePersonagemEspecialidade" action="#{personagemMB.removeEspecialidade()}">
+                                        <p:confirm header="Confirmação" message="Deseja deletar este registro?" icon="pi pi-exclamation-triangle" />
+                                        <f:setPropertyActionListener target="#{personagemMB.personagemEspecialidade}" value="#{registro}"/> 
+                                    </p:commandButton>
+                                </center>    
+                            </p:column>
+
+                        </p:dataTable>
+
+
+
+                        <p:toolbar styleClass="toolbarPadrao">
+                            <f:facet name="left">
+
+                                <p:commandButton process="@form" action="#{personagemMB.salvar()}" value="Salvar" icon="fa fa-floppy-o" />
+                            </f:facet>
+
+                            <f:facet name="right">
+                                <p:button value="Cancelar" icon="fa fa-ban" class="btn-danger" outcome="/pages/personagem/listapersonagem.xhtml" />
+                            </f:facet>
+
+                        </p:toolbar>
+
+                    </h:form>
+
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

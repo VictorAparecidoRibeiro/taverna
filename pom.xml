@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>br.com.projeto.taverna</groupId>
+    <artifactId>taverna</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+    <name>taverna</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+    <!-- Plugin do maven e versao jdk java 1.8 -->
+    <build>
+        <finalName>taverna</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>                    
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+   <dependencies>
+        
+       
+        
+        
+       
+        <!-- Implementacao do Bean Validation -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>5.1.3.Final</version>
+            <scope>compile</scope>
+        </dependency>
+    
+        <!-- Núcleo do Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.8.Final</version>
+            <scope>compile</scope>
+        </dependency>
+		
+        <!-- Implementação de EntityManager da JPA -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.3.8.Final</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- Pool de conexoes com C3P0 -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>4.3.8.Final</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Driver do PostgreSQL -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.2-1003-jdbc4</version>
+            <scope>compile</scope>            
+        </dependency>
+    
+        <!-- Weld (implementação do CDI) -->
+        <dependency>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet</artifactId>
+            <version>2.2.9.Final</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- Weld depende do Jandex -->
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jandex</artifactId>
+            <version>1.2.3.Final</version>
+            <scope>compile</scope>
+        </dependency>                  
+                              
+        <!--Template Ecuador Prime Faces -->
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>ecuador</artifactId>
+            <version>2.0.0</version>
+            <scope>compile</scope>
+        </dependency>                        
+                                    
+        <!-- PrimeFaces (biblioteca de componentes) -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>6.2</version>
+            <scope>compile</scope>
+        </dependency>
+                
+        <!-- PrimeFaces Extension (biblioteca de componentes) -->
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>primefaces-extensions</artifactId>
+            <version>6.2</version>
+        </dependency>
+        
+
+        
+        <!-- Biblioteca de icones FortAwesome -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>4.4.0</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- Mojarra (implementacao do JSF) -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.faces</artifactId>
+            <version>2.2.10</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- OmniFaces (utilitarios para JSF) -->
+        <dependency>
+            <groupId>org.omnifaces</groupId>
+            <artifactId>omnifaces</artifactId>
+            <version>2.0</version>
+            <scope>compile</scope>
+        </dependency>         
+        
+        <!-- Commons Logging (Especificação de logging) -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.3</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- Log4J (Implementação de logging)-->    	
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+            <scope>compile</scope>
+        </dependency>
+		
+        <!-- Commons Lang (utilidades) -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- Commons IO-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- Email - javamail -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+            <scope>compile</scope>
+        </dependency>	
+        
+        <!-- Velocity (template para email) -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-tools</artifactId>
+            <version>2.0</version>
+            <scope>compile</scope>
+        </dependency>            
+        
+          <dependency>
+             <groupId>org.apache.velocity</groupId>
+             <artifactId>velocity-engine-core</artifactId>
+               <version>2.0</version>
+            </dependency>  
+        
+        <!-- Apache POI -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.12</version>
+            <scope>compile</scope>
+        </dependency>
+                
+        <!-- Jasper Reports 
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.0.4</version>
+            <scope>compile</scope>                                     
+        </dependency>        -->
+		
+        <!-- Fonts para Jasper Reports 	        
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports-fonts</artifactId>
+            <version>6.0.0</version>
+            <scope>compile</scope>
+        </dependency>  -->      
+        
+        <!-- Jersey Server Core (Implementação do REST) -->
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>2.21</version>
+            <scope>compile</scope>
+        </dependency>
+               
+        <!-- Jersey Server Container -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>2.21</version>
+            <scope>compile</scope>
+        </dependency>        
+        
+        <!-- Ponte Jersey e CDI -->
+        <dependency>
+            <groupId>org.glassfish.jersey.containers.glassfish</groupId>
+            <artifactId>jersey-gf-cdi</artifactId>
+            <version>2.14</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- Jersey Client -->
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>2.21</version>
+            <scope>compile</scope>
+        </dependency>
+                
+        <!-- Jersey Json 2.22.1 -->
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>2.21</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!--
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.2.1</version>
+        </dependency>
+           
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.2.1</version>
+        </dependency> -->
+        
+
+        <!-- Sclar - Lib para redimensionar imagens -->
+        <dependency>
+            <groupId>org.imgscalr</groupId>
+            <artifactId>imgscalr-lib</artifactId>
+            <version>4.2</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        
+    
+        
+        
+                
+        
+                
+        <!-- CorsFilter - Acessar recursos cross-origem (url de outro dominio) -->
+        <dependency>
+            <groupId>com.thetransactioncompany</groupId>
+            <artifactId>cors-filter</artifactId>
+            <version>2.4</version>
+            <scope>compile</scope>
+        </dependency>   
+        
+        <!-- Sentry -->
+        <dependency>
+            <groupId>io.sentry</groupId>
+            <artifactId>sentry-log4j</artifactId>
+            <version>1.7.5</version>
+        </dependency>       
+        
+        <!--Apache Commons upload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        
+        <!-- Amazon S3 - Upload de Arquivos -->                                         
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>1.11.224</version>
+            <scope>compile</scope>
+        </dependency>    
+               
+        
+        <!-- Swagger para Documentacao da API REST -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-jersey2-jaxrs</artifactId>
+            <version>1.5.3</version>
+            <scope>compile</scope>
+        </dependency> 
+        
+        
+        <!-- Java JWT - Trabalhar com Tokens para JSON -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>2.2.0</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        <!-- Gson - Converte objetos java em json-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.0</version>
+            <scope>compile</scope>
+        </dependency>
+        
+        
+        <!-- Quartz -->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz-jobs</artifactId>
+            <version>2.2.2</version>
+            <scope>compile</scope>
+        </dependency>
+                
+      
+           
+        
+
+        
+        
+             	
+        <!-- API de Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>   
+        
+              
+                          
+        
+    </dependencies>
+    
+    
+    
+    
+    <!-- Repositórios -->
+    <repositories>
+        
+        <!-- Repositório para tema do bootstrap-->
+        <repository>
+            <id>prime-repo</id>
+            <name>PrimeFaces Maven Repository</name>
+            <url>http://repository.primefaces.org</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+    
+</project>
